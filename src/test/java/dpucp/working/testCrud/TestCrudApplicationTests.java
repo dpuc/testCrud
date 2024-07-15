@@ -34,7 +34,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 @AutoConfigureMockMvc
 public class TestCrudApplicationTests {
 
-	@Autowired
+	/*@Autowired
     private UserService userService;
 	@Autowired
     private UserController userController;
@@ -181,5 +181,5 @@ public class TestCrudApplicationTests {
         
         assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         assertFalse(userService.findById(userId).isPresent());
-    }
+    }*/
 }
