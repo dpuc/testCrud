@@ -48,6 +48,7 @@ public class UserController {
             User existingUser = user.get();
             existingUser.setName(userDetails.getName());
             existingUser.setEmail(userDetails.getEmail());
+            existingUser.setPassword(userDetails.getPassword());
             return new ResponseEntity<>(userService.save(existingUser), HttpStatus.OK);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -64,7 +65,7 @@ public class UserController {
             try {
                 ((ObjectNode) userJson).setAll((ObjectNode) updates);
                 User updatedUser = objectMapper.treeToValue(userJson, User.class);
-                return new ResponseEntity<>(userService.save(updatedUser), HttpStatus.OK);
+                return new ResponseEntity<>(userService.save(updatedUser), HttpStatus.NO_CONTENT);
             } catch (JsonProcessingException e) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
